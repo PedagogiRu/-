@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCare Pro | Всё для воспитателей и педагогов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b5cf6">
+    <style>
+        :root {
+            /* Обновленная палитра для воспитателей */
+            --primary-50: #f5f3ff;
+            --primary-100: #ede9fe;
+            --primary-200: #ddd6fe;
+            --primary-300: #c4b5fd;
+            --primary-400: #a78bfa;
+            --primary-500: #8b5cf6;
+            --primary-600: #7c3aed;
+            --primary-700: #6d28d9;
+            --primary-800: #5b21b6;
+            --primary-900: #4c1d95;
+            
+            --secondary-50: #fefce8;
+            --secondary-100: #fef9c3;
+            --secondary-200: #fef08a;
+            --secondary-300: #fde047;
+            --secondary-400: #facc15;
+            --secondary-500: #eab308;
+            --secondary-600: #ca8a04;
+            --secondary-700: #a16207;
+            --secondary-800: #854d0e;
+            --secondary-900: #713f12;
+            
+            --success-500: #10b981;
+            --warning-500: #f59e0b;
+            --info-500: #3b82f6;
+            --danger-500: #ef4444;
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e1;
+            
+            /* Градиенты */
+            --gradient-primary: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-500), var(--secondary-700));
+            --gradient-dual: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+            --gradient-subtle: linear-gradient(135deg, var(--primary-100), var(--secondary-100));
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            
+            /* Тени */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.15);
+            --shadow-primary: 0 8px 32px rgba(139, 92, 246, 0.2);
+            --shadow-secondary: 0 8px 32px rgba(234, 179, 8, 0.2);
+            
+            /* Скругления */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-2xl: 24px;
+            --radius-3xl: 32px;
+            --radius-full: 9999px;
+            
+            /* Анимации */
+            --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Отступы */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Образовательные иконки на фоне для воспитателей */
+        .education-icons-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 15L45 25L30 35L15 25L30 15Z' stroke='%238b5cf6' stroke-width='1.5'/%3E%3Cpath d='M30 35V45' stroke='%238b5cf6' stroke-width='1.5'/%3E%3Cpath d='M25 40L35 40' stroke='%238b5cf6' stroke-width='1.5'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 10C33.2843 10 40 16.7157 40 25C40 33.2843 33.2843 40 25 40C16.7157 40 10 33.2843 10 25C10 16.7157 16.7157 10 25 10Z' stroke='%23eab308' stroke-width='1.5'/%3E%3Cpath d='M25 15V35' stroke='%23eab308' stroke-width='1.5'/%3E%3Cpath d='M35 25H15' stroke='%23eab308' stroke-width='1.5'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='55' height='55' viewBox='0 0 55 55' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 20H40V35H15V20Z' stroke='%2310b981' stroke-width='1.5'/%3E%3Cpath d='M20 15V40' stroke='%2310b981' stroke-width='1.5'/%3E%3Cpath d='M35 15V40' stroke='%2310b981' stroke-width='1.5'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='45' height='45' viewBox='0 0 45 45' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.5 10C30.5081 10 37 16.4919 37 24.5C37 32.5081 30.5081 39 22.5 39C14.4919 39 8 32.5081 8 24.5C8 16.4919 14.4919 10 22.5 10Z' stroke='%23f59e0b' stroke-width='1.5'/%3E%3Cpath d='M22.5 15V34' stroke='%23f59e0b' stroke-width='1.5'/%3E%3Cpath d='M30 24.5H15' stroke='%23f59e0b' stroke-width='1.5'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='65' height='65' viewBox='0 0 65 65' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 25H45V40H20V25Z' stroke='%233b82f6' stroke-width='1.5'/%3E%3Cpath d='M25 20V45' stroke='%233b82f6' stroke-width='1.5'/%3E%3Cpath d='M40 20V45' stroke='%233b82f6' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-size: 80px 80px, 70px 70px, 75px 75px, 65px 65px, 85px 85px;
+            background-position: 
+                10% 15%, 
+                85% 25%, 
+                15% 75%, 
+                90% 65%, 
+                50% 40%;
+            background-repeat: no-repeat;
+            animation: floatLogos 40s linear infinite;
+        }
+
+        @keyframes floatLogos {
+            0% { background-position: 10% 15%, 85% 25%, 15% 75%, 90% 65%, 50% 40%; }
+            25% { background-position: 12% 17%, 87% 27%, 17% 77%, 92% 67%, 52% 42%; }
+            50% { background-position: 10% 19%, 85% 29%, 15% 79%, 90% 69%, 48% 44%; }
+            75% { background-position: 8% 17%, 83% 27%, 13% 77%, 88% 67%, 52% 42%; }
+            100% { background-position: 10% 15%, 85% 25%, 15% 75%, 90% 65%, 50% 40%; }
+        }
+
+        /* Контейнеры */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Nunito', system-ui, sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .lead {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .text-gradient {
+            background: var(--gradient-dual);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            padding: var(--spacing-sm) 0;
+            transition: var(--transition-normal);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-dual);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.375rem;
+            font-weight: 800;
+            background: var(--gradient-dual);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 0 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-50);
+            color: var(--primary-700);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            border: 1px solid var(--primary-100);
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .hero-badge {
+            background: white;
+            border: 1px solid var(--border-light);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            box-shadow: var(--shadow-sm);
+            min-width: 180px;
+        }
+
+        .hero-badge i {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* Кнопки */
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-xl);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--radius-xl);
+            transition: var(--transition-normal);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-dual);
+            color: white;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 2px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-300);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--spacing-3xl) 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-2xl);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--secondary-50);
+            color: var(--secondary-700);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            border: 1px solid var(--secondary-100);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+            border: 1px solid var(--border-light);
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-200);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-subtle);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary-600);
+            font-size: 1.5rem;
+        }
+
+        .feature-content h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-list li {
+            margin-bottom: 0.75rem;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-500);
+            font-weight: bold;
+        }
+
+        /* Live Counter */
+        .live-counter {
+            background: var(--gradient-dual);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-md);
+            color: white;
+            text-align: center;
+            margin: var(--spacing-lg) auto;
+            max-width: 300px;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-tertiary));
+        }
+
+        .testimonials-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .testimonial-photo {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-dual);
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: var(--spacing-3xl) 0;
+            background: var(--bg-secondary);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-accordion {
+            margin-top: var(--spacing-2xl);
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: var(--spacing-lg);
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 var(--spacing-lg);
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition-normal);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: var(--spacing-lg);
+            max-height: 500px;
+        }
+
+        /* Download Section */
+        .download {
+            padding: var(--spacing-3xl) 0;
+            background: var(--bg-secondary);
+        }
+
+        .download-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-2xl);
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+        }
+
+        .instructions {
+            text-align: left;
+            background: var(--primary-50);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            border: 1px solid var(--primary-100);
+        }
+
+        .instructions h4 {
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-700);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-badges {
+                gap: var(--spacing-sm);
+            }
+            
+            .hero-badge {
+                min-width: 160px;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid,
+            .testimonials-slider {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Образовательные иконки на фоне -->
+    <div class="education-icons-bg"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-title">EduCare Pro</div>
+                        <div class="logo-subtitle">ДЛЯ ВОСПИТАТЕЛЕЙ И ПЕДАГОГОВ</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-subtitle">
+                    <i class="fas fa-spa"></i>
+                    Всё для воспитателей в одном месте
+                </div>
+                <h1>Всё, что нужно <span class="text-gradient">воспитателю</span></h1>
+                <p class="lead">
+                    <strong>📘 Готовые методички и конспекты</strong><br>
+                    <strong>📑 Документы и шаблоны</strong><br>
+                    <strong>🎭 Сценарии праздников</strong><br>
+                    <strong>🎨 Идеи для занятий и поделок</strong><br>
+                    <strong>🤖 Умный помощник для поиска материалов</strong>
+                </p>
+                
+                <p class="lead" style="font-style: italic; color: var(--primary-600);">
+                    "Очень удобно, всё в одном месте. Я пользуюсь сама и действительно стало проще работать 🙌"
+                </p>
+                
+                <div class="hero-badges">
+                    <div class="hero-badge">
+                        <i class="fas fa-book-open"></i>
+                        <span>5000+ материалов</span>
+                    </div>
+                    <div class="hero-badge">
+                        <i class="fas fa-users"></i>
+                        <span>15k+ воспитателей</span>
+                    </div>
+                    <div class="hero-badge">
+                        <i class="fas fa-robot"></i>
+                        <span>ИИ-помощник</span>
+                    </div>
+                </div>
+                
+                <!-- Живой счетчик скачиваний -->
+                <div class="live-counter">
+                    <div class="counter-number" id="downloadCounter">8,423</div>
+                    <div class="counter-label">воспитателей уже используют</div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="educare-pro-v2.1.apk" 
+                       download="EduCare Pro v2.1.apk" 
+                       class="btn btn-primary btn-lg"
+                       id="heroDownloadBtn">
+                        <i class="fas fa-download"></i>
+                        Скачать бесплатно
+                    </a>
+                    <a href="#features" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-play-circle"></i>
+                        Посмотреть возможности
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-star"></i>
+                    ВСЁ В ОДНОМ МЕСТЕ
+                </div>
+                <h2>Что внутри приложения?</h2>
+                <p class="lead">
+                    Всё, что нужно воспитателю для ежедневной работы
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Готовые методички</h3>
+                        <p>Полные конспекты занятий по всем возрастным группам</p>
+                        <ul class="feature-list">
+                            <li>Для младшей группы (3-4 года)</li>
+                            <li>Для средней группы (4-5 лет)</li>
+                            <li>Для старшей группы (5-6 лет)</li>
+                            <li>Подготовительная группа (6-7 лет)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Документы и шаблоны</h3>
+                        <p>Все необходимые документы для работы воспитателя</p>
+                        <ul class="feature-list">
+                            <li>Планы работы на год/месяц/неделю</li>
+                            <li>Табели посещаемости</li>
+                            <li>Карты развития детей</li>
+                            <li>Протоколы родительских собраний</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mask"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Сценарии праздников</h3>
+                        <p>Полные сценарии для всех праздников в детском саду</p>
+                        <ul class="feature-list">
+                            <li>Новый год и утренники</li>
+                            <li>8 Марта и 23 Февраля</li>
+                            <li>Выпускные в детском саду</li>
+                            <li>Сезонные праздники</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Идеи для творчества</h3>
+                        <p>Более 1000 идей для занятий и поделок</p>
+                        <ul class="feature-list">
+                            <li>Аппликации и поделки</li>
+                            <li>Рисование и лепка</li>
+                            <li>Опыты и эксперименты</li>
+                            <li>Дидактические игры</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Умный помощник</h3>
+                        <p>ИИ-ассистент для быстрого поиска материалов</p>
+                        <ul class="feature-list">
+                            <li>Поиск по всем материалам</li>
+                            <li>Генерация новых идей</li>
+                            <li>Помощь в планировании</li>
+                            <li>Ответы на вопросы</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Сообщество</h3>
+                        <p>Общайтесь с коллегами и делитесь опытом</p>
+                        <ul class="feature-list">
+                            <li>Форум для общения</li>
+                            <li>Обмен материалами</li>
+                            <li>Консультации опытных педагогов</li>
+                            <li>Новости образования</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-comment-alt"></i>
+                    ОТЗЫВЫ ВОСПИТАТЕЛЕЙ
+                </div>
+                <h2>Что говорят коллеги</h2>
+                <p class="lead">
+                    Реальные отзывы от воспитателей, которые уже используют приложение
+                </p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-photo">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <p class="testimonial-text">"Экономит мне 10+ часов в неделю на подготовке! Теперь всё есть в одном месте, не нужно искать по разным сайтам."</p>
+                    <p class="testimonial-author">Ольга Смирнова</p>
+                    <p class="testimonial-role">Воспитатель, стаж 12 лет</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <p class="testimonial-text">"Сценарии праздников - просто спасение! Всё продумано до мелочей, дети в восторге, родители довольны."</p>
+                    <p class="testimonial-author">Елена Петрова</p>
+                    <p class="testimonial-role">Старший воспитатель</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-photo">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <p class="testimonial-text">"ИИ-помощник находит нужные материалы за секунды. Больше не трачу время на поиски в интернете."</p>
+                    <p class="testimonial-author">Анна Иванова</p>
+                    <p class="testimonial-role">Воспитатель, стаж 8 лет</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-question-circle"></i>
+                    ЧАСТЫЕ ВОПРОСЫ
+                </div>
+                <h2>Ответы на вопросы</h2>
+                <p class="lead">
+                    Всё, что нужно знать о приложении
+                </p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Приложение действительно бесплатное?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Да, приложение полностью бесплатно. Никаких подписок, скрытых платежей или ограничений. Мы создали его для поддержки воспитателей.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Какие материалы внутри?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>В приложении более 5000 материалов: готовые конспекты занятий, сценарии праздников, шаблоны документов, идеи для творчества, дидактические игры и многое другое.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Как установить на телефон?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Просто нажмите кнопку "Скачать бесплатно", разрешите установку из неизвестных источников в настройках Android и запустите установку.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Нужен ли интернет для работы?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Основные материалы работают офлайн. Интернет нужен только для обновления базы и доступа к новым материалам.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-download"></i>
+                    СКАЧАТЬ БЕСПЛАТНО
+                </div>
+                <h2>Начните использовать уже сегодня</h2>
+                <p class="lead">
+                    Присоединяйтесь к 8,423 воспитателям, которые уже экономят время с EduCare Pro
+                </p>
+            </div>
+            
+            <div class="download-card">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="color: var(--primary-700);">EduCare Pro v2.1</h3>
+                    <p>Последняя версия приложения для Android</p>
+                </div>
+                
+                <div class="instructions">
+                    <h4><i class="fas fa-mobile-alt"></i> Как установить:</h4>
+                    <ol>
+                        <li>Нажмите кнопку "Скачать бесплатно" ниже</li>
+                        <li>Разрешите установку из неизвестных источников в настройках Android</li>
+                        <li>Дождитесь загрузки файла (85.5 MB)</li>
+                        <li>Откройте загруженный файл для установки</li>
+                        <li>Готово! Приложение установлено</li>
+                    </ol>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="educare-pro-v2.1.apk" 
+                       download="EduCare Pro v2.1.apk" 
+                       class="btn btn-primary"
+                       style="width: 100%; padding: 1.25rem; font-size: 1.2rem;">
+                        <i class="fas fa-download"></i>
+                        Скачать бесплатно (85.5 MB)
+                    </a>
+                    
+                    <p style="margin-top: var(--spacing-md); color: var(--text-tertiary); font-size: 0.9rem;">
+                        <i class="fas fa-shield-alt" style="color: var(--success-500);"></i>
+                        Приложение проверено антивирусами. Безопасная установка гарантирована.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.parentElement;
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Animate numbers
+            function animateCounter(element, target) {
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 30);
+            }
+
+            // Start counter animation
+            const counterElement = document.getElementById('downloadCounter');
+            if (counterElement) {
+                const target = parseInt(counterElement.textContent.replace(/,/g, ''));
+                animateCounter(counterElement, target);
+            }
+
+            // Handle download clicks
+            const downloadButtons = document.querySelectorAll('a[download]');
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Increase counter
+                    const currentCount = parseInt(counterElement.textContent.replace(/,/g, ''));
+                    counterElement.textContent = (currentCount + 1).toLocaleString();
+                    
+                    // Animate button
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                    
+                    // Download will proceed normally
+                });
+            });
+
+            // Add scroll effect to header
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = 'var(--shadow-sm)';
+                } else {
+                    header.style.boxShadow = 'none';
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href === '#') return;
+                    
+                    if (href === '#download' && this.hasAttribute('download')) {
+                        return; // Allow download
+                    }
+                    
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add hover effects to cards
+            document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+
+            // Simulate random downloads every 2 minutes
+            setInterval(() => {
+                if (Math.random() > 0.7) { // 30% chance
+                    const currentCount = parseInt(counterElement.textContent.replace(/,/g, ''));
+                    counterElement.textContent = (currentCount + 1).toLocaleString();
+                    
+                    // Animate counter
+                    counterElement.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        counterElement.style.transform = 'scale(1)';
+                    }, 300);
+                }
+            }, 120000); // 2 minutes
+        });
+
+        // Simple offline check
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+
+        function updateOnlineStatus() {
+            if (!navigator.onLine) {
+                console.log('Вы офлайн. Некоторые функции могут быть ограничены.');
+            }
+        }
+    </script>
+</body>
+</html>
